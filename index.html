@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Khusi ❤️ Piyush</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff6a88, #ff99ac);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 25px;
+      max-width: 450px;
+      margin: 40px auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      font-size: 2.4em;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .photos img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    button {
+      background: white;
+      color: #ff4d6d;
+      border: none;
+      padding: 12px 26px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      position: absolute;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 1.25em;
+      font-weight: bold;
+    }
+
+    /* Love letter */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 99;
+    }
+
+    .letter {
+      background: white;
+      color: #ff4d6d;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 360px;
+    }
+
+    /* Hearts */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="valentine.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Khusi ❤️</h1>
+
+  <p>
+    Every photo with you feels like a memory<br>
+    I want to relive forever 🥰<br>
+    You’re my calm, my chaos, and my happiest place.
+  </p>
+
+  <div class="photos">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo4.jpg">
+  </div>
+
+  <p><strong>Will you be my Valentine? 💖</strong></p>
+
+  <button onclick="yes()">Yes 😍</button>
+  <button id="noBtn" onmouseover="moveNo()">No 🙈</button>
+
+  <br><br>
+  <button onclick="openLetter()">Read my love letter 💌</button>
+
+  <div id="message"></div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="letter">
+    <h2>My love💖</h2>
+    <p>
+      With you, even ordinary moments<br>
+      turn into memories I treasure.<br><br>
+      Your smile feels like home,<br>
+      your hand fits perfectly in mine,<br>
+      and my heart somehow chose you<br>
+      without hesitation.<br><br>
+      I promise love, laughter,<br>
+      and a lifetime of annoying you 😄❤️
+    </p>
+    <p><strong>Forever yours,<br>Piyush</strong></p>
+    <button onclick="closeLetter()">Close 💕</button>
+  </div>
+</div>
+
+<script>
+  function yes() {
+    document.getElementById("message").innerHTML =
+      "Best decision ever 😌❤️<br>Happy Valentine’s Day Khusi!<br>— Piyush";
+  }
+
+  function moveNo() {
+    const btn = document.getElementById("noBtn");
+    const x = Math.random() * 250 - 125;
+    const y = Math.random() * 150 - 75;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  function openLetter() {
+    document.getElementById("overlay").style.display = "flex";
+  }
+
+  function closeLetter() {
+    document.getElementById("overlay").style.display = "none";
+  }
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }, 300);
+</script>
+
+</body>
+</html>
